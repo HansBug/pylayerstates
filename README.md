@@ -5,8 +5,8 @@
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/pylayerstates)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/pylayerstates)
 
-![Loc](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/HansBug/7eb8c32d6549edaa09592ca2a5a47187/raw/loc.json)
-![Comments](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/HansBug/7eb8c32d6549edaa09592ca2a5a47187/raw/comments.json)
+![Loc](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/HansBug/d5e9431cf2dc45fbe38dc45fc760e543/raw/loc.json)
+![Comments](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/HansBug/d5e9431cf2dc45fbe38dc45fc760e543/raw/comments.json)
 [![Maintainability](https://api.codeclimate.com/v1/badges/5b6e14a915b63faeae90/maintainability)](https://codeclimate.com/github/HansBug/pylayerstates/maintainability)
 [![codecov](https://codecov.io/gh/hansbug/pylayerstates/branch/main/graph/badge.svg?token=XJVDP4EFAT)](https://codecov.io/gh/hansbug/pylayerstates)
 
