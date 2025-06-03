@@ -26,7 +26,7 @@ class ASTNode(ABC):
 
 @dataclass
 class Program(ASTNode):
-    root_state: 'TransitionStatement'
+    root_state: 'StateDefinition'
 
     def _print_to_str(self, sf):
         self.root_state._print_to_str(sf)
