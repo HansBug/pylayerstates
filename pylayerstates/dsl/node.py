@@ -20,7 +20,7 @@ class ASTNode(ABC):
             return sf.getvalue()
 
     def _print_to_str(self, sf):
-        raise NotImplementedError
+        raise NotImplementedError  # pragma: no cover
 
 
 @dataclass
