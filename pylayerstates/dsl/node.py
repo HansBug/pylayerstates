@@ -6,6 +6,7 @@ from typing import List, Optional, Union
 
 __all__ = [
     'ASTNode',
+    'Program',
     'TransitionStatement',
     'EntryStatement',
     'StateDefinition',
@@ -21,6 +22,14 @@ class ASTNode(ABC):
 
     def _print_to_str(self, sf):
         raise NotImplementedError  # pragma: no cover
+
+
+@dataclass
+class Program(ASTNode):
+    root_state: 'TransitionStatement'
+
+    def _print_to_str(self, sf):
+        self.root_state._print_to_str(sf)
 
 
 @dataclass

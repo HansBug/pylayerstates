@@ -1,5 +1,5 @@
 from .grammar import GrammarListener, GrammarParser
-from .node import TransitionStatement, EntryStatement, StateDefinition
+from .node import TransitionStatement, EntryStatement, StateDefinition, Program
 
 
 class GrammarParseListener(GrammarListener):
@@ -9,7 +9,7 @@ class GrammarParseListener(GrammarListener):
 
     def exitProgram(self, ctx: GrammarParser.ProgramContext):
         super().exitProgram(ctx)
-        self.nodes[ctx] = self.nodes[ctx.stateDefinition()]
+        self.nodes[ctx] = Program(self.nodes[ctx.stateDefinition()])
 
     def exitStateDefinition(self, ctx: GrammarParser.StateDefinitionContext):
         super().exitStateDefinition(ctx)
