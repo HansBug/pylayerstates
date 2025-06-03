@@ -1,7 +1,7 @@
 import weakref
 from typing import Optional, List, Dict, Tuple
 
-from ..dsl import Program, parse_program, TransitionStatement, StateDefinition, EntryStatement
+from ..dsl import Program, parse_program, TransitionStatement, StateDefinition
 
 
 class Transition:
@@ -136,6 +136,8 @@ class State:
     def rename_state(self, src_name: str, dst_name: str):
         if self._name == src_name:
             self._name = dst_name
+            if self._display_name == src_name:
+                self._display_name = dst_name
         for i in range(len(self._substates_names)):
             if self._substates_names[i] == src_name:
                 self._substates_names[i] = dst_name
@@ -156,16 +158,20 @@ class State:
 
     def to_node(self) -> StateDefinition:
         statements = []
-        if self._entry_state_name is not None:
-            statements.append(EntryStatement(self._entry_state_name))
         for state in self.substates:
-            statements.append(state.to_node())
+            substate_node = state.to_node()
+            substate_node.is_entry = (self._entry_state_name == state.name)
+            statements.append(substate_node)
         for trans in self.transitions:
-            statements.append(trans.to_node())
+            trans_node = trans.to_node()
+            if trans_node.from_symbol == self._name:
+                trans_node.from_symbol = None
+            statements.append(trans_node)
 
         return StateDefinition(
             name=self._name,
             display_name=None if self.display_name == self.name else self.display_name,
+            is_entry=False,
             statements=statements
         )
 
@@ -209,16 +215,18 @@ class Model:
         def _build_states(state_def: StateDefinition):
             state = model.add_state(name=state_def.name, display_name=state_def.display_name)
             for stats in state_def.statements:
-                if isinstance(stats, EntryStatement):
-                    if state.entry_state_name is not None:
-                        raise ValueError(f'Duplicate entry state for state {state!r} - {stats.entry!r}.')
-                    state.entry_state_name = stats.entry
-                elif isinstance(stats, StateDefinition):
+                if isinstance(stats, StateDefinition):
                     substate = _build_states(stats)
                     state.substate_names.append(substate.name)
+
+                    if stats.is_entry:
+                        if state.entry_state_name is not None:
+                            raise ValueError(f'Duplicate entry state for state {state!r} - {stats.name!r}.')
+                        state.entry_state_name = stats.name
+
                 elif isinstance(stats, TransitionStatement):
                     all_transitions.append((
-                        stats.from_symbol,
+                        stats.from_symbol if stats.from_symbol is not None else state.name,
                         stats.to_symbol,
                         stats.events,
                         stats.backward_layers,
