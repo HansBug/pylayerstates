@@ -12,7 +12,7 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\26")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\24")
         buf.write("Z\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
         buf.write("\t\b\4\t\t\t\4\n\t\n\4\13\t\13\3\2\3\2\3\2\3\3\5\3\33")
         buf.write("\n\3\3\3\3\3\5\3\37\n\3\3\3\3\3\3\3\3\3\3\3\5\3&\n\3\3")
@@ -20,27 +20,26 @@ def serializedATN():
         buf.write("\5\f\5\16\5\66\13\5\3\6\3\6\3\6\5\6;\n\6\3\7\3\7\3\7\3")
         buf.write("\7\3\b\3\b\3\b\3\b\3\b\3\b\5\bG\n\b\3\b\3\b\3\t\3\t\3")
         buf.write("\t\7\tN\n\t\f\t\16\tQ\13\t\3\n\3\n\3\13\3\13\3\13\3\13")
-        buf.write("\3\13\3\13\2\2\f\2\4\6\b\n\f\16\20\22\24\2\4\3\2\4\5\3")
-        buf.write("\2\6\7\2Y\2\26\3\2\2\2\4,\3\2\2\2\6.\3\2\2\2\b\64\3\2")
-        buf.write("\2\2\n:\3\2\2\2\f<\3\2\2\2\16@\3\2\2\2\20J\3\2\2\2\22")
-        buf.write("R\3\2\2\2\24T\3\2\2\2\26\27\5\4\3\2\27\30\7\2\2\3\30\3")
-        buf.write("\3\2\2\2\31\33\7\3\2\2\32\31\3\2\2\2\32\33\3\2\2\2\33")
-        buf.write("\34\3\2\2\2\34\36\7\20\2\2\35\37\5\6\4\2\36\35\3\2\2\2")
-        buf.write('\36\37\3\2\2\2\37 \3\2\2\2 !\7\n\2\2!"\5\b\5\2"#\7\13')
-        buf.write("\2\2#-\3\2\2\2$&\7\3\2\2%$\3\2\2\2%&\3\2\2\2&'\3\2\2")
-        buf.write("\2')\7\20\2\2(*\5\6\4\2)(\3\2\2\2)*\3\2\2\2*+\3\2\2\2")
-        buf.write("+-\7\17\2\2,\32\3\2\2\2,%\3\2\2\2-\5\3\2\2\2./\t\2\2\2")
-        buf.write("/\60\7\22\2\2\60\7\3\2\2\2\61\63\5\n\6\2\62\61\3\2\2\2")
-        buf.write("\63\66\3\2\2\2\64\62\3\2\2\2\64\65\3\2\2\2\65\t\3\2\2")
-        buf.write("\2\66\64\3\2\2\2\67;\5\f\7\28;\5\4\3\29;\5\16\b\2:\67")
-        buf.write("\3\2\2\2:8\3\2\2\2:9\3\2\2\2;\13\3\2\2\2<=\t\3\2\2=>\7")
-        buf.write("\20\2\2>?\7\17\2\2?\r\3\2\2\2@A\7\20\2\2AB\7\7\2\2BC\7")
-        buf.write("\20\2\2CD\7\16\2\2DF\5\20\t\2EG\5\24\13\2FE\3\2\2\2FG")
-        buf.write("\3\2\2\2GH\3\2\2\2HI\7\17\2\2I\17\3\2\2\2JO\5\22\n\2K")
-        buf.write("L\7\b\2\2LN\5\22\n\2MK\3\2\2\2NQ\3\2\2\2OM\3\2\2\2OP\3")
-        buf.write("\2\2\2P\21\3\2\2\2QO\3\2\2\2RS\7\20\2\2S\23\3\2\2\2TU")
-        buf.write("\7\f\2\2UV\7\t\2\2VW\7\21\2\2WX\7\r\2\2X\25\3\2\2\2\13")
-        buf.write("\32\36%),\64:FO")
+        buf.write("\3\13\3\13\2\2\f\2\4\6\b\n\f\16\20\22\24\2\2\2Y\2\26\3")
+        buf.write("\2\2\2\4,\3\2\2\2\6.\3\2\2\2\b\64\3\2\2\2\n:\3\2\2\2\f")
+        buf.write("<\3\2\2\2\16@\3\2\2\2\20J\3\2\2\2\22R\3\2\2\2\24T\3\2")
+        buf.write("\2\2\26\27\5\4\3\2\27\30\7\2\2\3\30\3\3\2\2\2\31\33\7")
+        buf.write("\3\2\2\32\31\3\2\2\2\32\33\3\2\2\2\33\34\3\2\2\2\34\36")
+        buf.write("\7\16\2\2\35\37\5\6\4\2\36\35\3\2\2\2\36\37\3\2\2\2\37")
+        buf.write(' \3\2\2\2 !\7\b\2\2!"\5\b\5\2"#\7\t\2\2#-\3\2\2\2$&')
+        buf.write("\7\3\2\2%$\3\2\2\2%&\3\2\2\2&'\3\2\2\2')\7\16\2\2(*")
+        buf.write("\5\6\4\2)(\3\2\2\2)*\3\2\2\2*+\3\2\2\2+-\7\r\2\2,\32\3")
+        buf.write("\2\2\2,%\3\2\2\2-\5\3\2\2\2./\7\4\2\2/\60\7\20\2\2\60")
+        buf.write("\7\3\2\2\2\61\63\5\n\6\2\62\61\3\2\2\2\63\66\3\2\2\2\64")
+        buf.write("\62\3\2\2\2\64\65\3\2\2\2\65\t\3\2\2\2\66\64\3\2\2\2\67")
+        buf.write(";\5\f\7\28;\5\4\3\29;\5\16\b\2:\67\3\2\2\2:8\3\2\2\2:")
+        buf.write("9\3\2\2\2;\13\3\2\2\2<=\7\5\2\2=>\7\16\2\2>?\7\r\2\2?")
+        buf.write("\r\3\2\2\2@A\7\16\2\2AB\7\5\2\2BC\7\16\2\2CD\7\f\2\2D")
+        buf.write("F\5\20\t\2EG\5\24\13\2FE\3\2\2\2FG\3\2\2\2GH\3\2\2\2H")
+        buf.write("I\7\r\2\2I\17\3\2\2\2JO\5\22\n\2KL\7\6\2\2LN\5\22\n\2")
+        buf.write("MK\3\2\2\2NQ\3\2\2\2OM\3\2\2\2OP\3\2\2\2P\21\3\2\2\2Q")
+        buf.write("O\3\2\2\2RS\7\16\2\2S\23\3\2\2\2TU\7\n\2\2UV\7\7\2\2V")
+        buf.write("W\7\17\2\2WX\7\13\2\2X\25\3\2\2\2\13\32\36%),\64:FO")
         return buf.getvalue()
 
 
@@ -56,9 +55,7 @@ class GrammarParser(Parser):
     literalNames = [
         "<INVALID>",
         "'state'",
-        "'named'",
         "'as'",
-        "'entry'",
         "'->'",
         "'+'",
         "'^'",
@@ -73,9 +70,7 @@ class GrammarParser(Parser):
     symbolicNames = [
         "<INVALID>",
         "STATE",
-        "NAMED",
         "AS",
-        "ENTRY",
         "ARROW",
         "PLUS",
         "CARET",
@@ -120,25 +115,23 @@ class GrammarParser(Parser):
 
     EOF = Token.EOF
     STATE = 1
-    NAMED = 2
-    AS = 3
-    ENTRY = 4
-    ARROW = 5
-    PLUS = 6
-    CARET = 7
-    LBRACE = 8
-    RBRACE = 9
-    LPAREN = 10
-    RPAREN = 11
-    COLON = 12
-    SEMICOLON = 13
-    IDENTIFIER = 14
-    INTEGER = 15
-    STRING = 16
-    BLOCK_COMMENT = 17
-    LINE_COMMENT = 18
-    PYTHON_COMMENT = 19
-    WS = 20
+    AS = 2
+    ARROW = 3
+    PLUS = 4
+    CARET = 5
+    LBRACE = 6
+    RBRACE = 7
+    LPAREN = 8
+    RPAREN = 9
+    COLON = 10
+    SEMICOLON = 11
+    IDENTIFIER = 12
+    INTEGER = 13
+    STRING = 14
+    BLOCK_COMMENT = 15
+    LINE_COMMENT = 16
+    PYTHON_COMMENT = 17
+    WS = 18
 
     def __init__(self, input: TokenStream, output: TextIO = sys.stdout):
         super().__init__(input, output)
@@ -255,7 +248,7 @@ class GrammarParser(Parser):
                 self.state = 28
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la == GrammarParser.NAMED or _la == GrammarParser.AS:
+                if _la == GrammarParser.AS:
                     self.state = 27
                     self.namedAs()
 
@@ -281,7 +274,7 @@ class GrammarParser(Parser):
                 self.state = 39
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la == GrammarParser.NAMED or _la == GrammarParser.AS:
+                if _la == GrammarParser.AS:
                     self.state = 38
                     self.namedAs()
 
@@ -306,14 +299,11 @@ class GrammarParser(Parser):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def STRING(self):
-            return self.getToken(GrammarParser.STRING, 0)
-
-        def NAMED(self):
-            return self.getToken(GrammarParser.NAMED, 0)
-
         def AS(self):
             return self.getToken(GrammarParser.AS, 0)
+
+        def STRING(self):
+            return self.getToken(GrammarParser.STRING, 0)
 
         def getRuleIndex(self):
             return GrammarParser.RULE_namedAs
@@ -329,16 +319,10 @@ class GrammarParser(Parser):
     def namedAs(self):
         localctx = GrammarParser.NamedAsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_namedAs)
-        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 44
-            _la = self._input.LA(1)
-            if not (_la == GrammarParser.NAMED or _la == GrammarParser.AS):
-                self._errHandler.recoverInline(self)
-            else:
-                self._errHandler.reportMatch(self)
-                self.consume()
+            self.match(GrammarParser.AS)
             self.state = 45
             self.match(GrammarParser.STRING)
         except RecognitionException as re:
@@ -388,7 +372,6 @@ class GrammarParser(Parser):
                 (1 << _la)
                 & (
                     (1 << GrammarParser.STATE)
-                    | (1 << GrammarParser.ENTRY)
                     | (1 << GrammarParser.ARROW)
                     | (1 << GrammarParser.IDENTIFIER)
                 )
@@ -479,14 +462,11 @@ class GrammarParser(Parser):
             self.parser = parser
             self.symbol = None  # Token
 
-        def SEMICOLON(self):
-            return self.getToken(GrammarParser.SEMICOLON, 0)
-
-        def ENTRY(self):
-            return self.getToken(GrammarParser.ENTRY, 0)
-
         def ARROW(self):
             return self.getToken(GrammarParser.ARROW, 0)
+
+        def SEMICOLON(self):
+            return self.getToken(GrammarParser.SEMICOLON, 0)
 
         def IDENTIFIER(self):
             return self.getToken(GrammarParser.IDENTIFIER, 0)
@@ -505,16 +485,10 @@ class GrammarParser(Parser):
     def entryStatement(self):
         localctx = GrammarParser.EntryStatementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_entryStatement)
-        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 58
-            _la = self._input.LA(1)
-            if not (_la == GrammarParser.ENTRY or _la == GrammarParser.ARROW):
-                self._errHandler.recoverInline(self)
-            else:
-                self._errHandler.reportMatch(self)
-                self.consume()
+            self.match(GrammarParser.ARROW)
             self.state = 59
             localctx.symbol = self.match(GrammarParser.IDENTIFIER)
             self.state = 60

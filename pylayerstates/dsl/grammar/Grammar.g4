@@ -10,7 +10,7 @@ stateDefinition
     ;
 
 namedAs
-    : (NAMED|AS) STRING
+    : AS STRING
     ;
 
 stateBody
@@ -24,7 +24,7 @@ statement
     ;
 
 entryStatement
-    : (ENTRY|ARROW) symbol=IDENTIFIER SEMICOLON
+    : ARROW symbol=IDENTIFIER SEMICOLON
     ;
 
 transitionStatement
@@ -45,9 +45,7 @@ backwardDef
 
 // Lexer rules
 STATE: 'state';
-NAMED: 'named';
 AS: 'as';
-ENTRY: 'entry';
 ARROW: '->';
 PLUS: '+';
 CARET: '^';

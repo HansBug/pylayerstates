@@ -10,7 +10,7 @@ class TestDSLProgram:
         ('state Z;', Program(root_state=StateDefinition(name='Z', display_name=None, statements=[]))),
         ('Z;', Program(root_state=StateDefinition(name='Z', display_name=None, statements=[]))),
         ("state Z as 'Zeta';", Program(root_state=StateDefinition(name='Z', display_name='Zeta', statements=[]))),
-        ("Z named 'Zeta';", Program(root_state=StateDefinition(name='Z', display_name='Zeta', statements=[]))),
+        ("Z as 'Zeta';", Program(root_state=StateDefinition(name='Z', display_name='Zeta', statements=[]))),
         ('state Z {}', Program(root_state=StateDefinition(name='Z', display_name=None, statements=[]))),
         ("Z as 'Zeta' {}", Program(root_state=StateDefinition(name='Z', display_name='Zeta', statements=[]))),
         (
@@ -54,7 +54,7 @@ class TestDSLProgram:
         ('state Z;', 'Z;\n'),
         ('Z;', 'Z;\n'),
         ("state Z as 'Zeta';", "Z as 'Zeta';\n"),
-        ("Z named 'Zeta';", "Z as 'Zeta';\n"),
+        ("Z as 'Zeta';", "Z as 'Zeta';\n"),
         ('state Z {}', 'Z;\n'),
         ("Z as 'Zeta' {}", "Z as 'Zeta';\n"),
         (
