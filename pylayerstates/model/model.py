@@ -62,7 +62,7 @@ class State:
                  transitions: Optional[List['Transition']] = None):
         self._model_ref = weakref.ref(model)
         self._name = name
-        self._display_name = display_name if display_name is not None else self._name
+        self._display_name = display_name
         self._substates_names = list(substate_names or [])
         self._entry_state_name = entry_state_name
         self._transitions = list(transitions or [])
@@ -81,7 +81,7 @@ class State:
             self.model.rename_state(self._name, new_name)
 
     @property
-    def display_name(self) -> str:
+    def display_name(self) -> Optional[str]:
         return self._display_name
 
     @display_name.setter
@@ -136,8 +136,6 @@ class State:
     def rename_state(self, src_name: str, dst_name: str):
         if self._name == src_name:
             self._name = dst_name
-            if self._display_name == src_name:
-                self._display_name = dst_name
         for i in range(len(self._substates_names)):
             if self._substates_names[i] == src_name:
                 self._substates_names[i] = dst_name
@@ -170,7 +168,7 @@ class State:
 
         return StateDefinition(
             name=self._name,
-            display_name=None if self.display_name == self.name else self.display_name,
+            display_name=self._display_name,
             is_entry=False,
             statements=statements
         )
