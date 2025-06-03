@@ -5,22 +5,26 @@ grammar Grammar;
 program: stateDefinition EOF;
 
 stateDefinition
-    : STATE symbol=IDENTIFIER (namedAs)? LBRACE stateBody RBRACE
-    | IDENTIFIER (namedAs)? LBRACE stateBody RBRACE
+    : STATE? symbol=IDENTIFIER (namedAs)? LBRACE stateBody RBRACE
+    | STATE? symbol=IDENTIFIER (namedAs)? SEMICOLON
     ;
 
 namedAs
-    : NAMED STRING
-    | AS STRING
+    : (NAMED|AS) STRING
     ;
 
 stateBody
-    : (entryStatement | stateDefinition | transitionStatement)*
+    : statement*
+    ;
+
+statement
+    : entryStatement
+    | stateDefinition
+    | transitionStatement
     ;
 
 entryStatement
-    : ENTRY symbol=IDENTIFIER SEMICOLON
-    | ARROW symbol=IDENTIFIER SEMICOLON
+    : (ENTRY|ARROW) symbol=IDENTIFIER SEMICOLON
     ;
 
 transitionStatement
