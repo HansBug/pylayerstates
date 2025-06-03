@@ -5,8 +5,13 @@ grammar Grammar;
 program: stateDefinition EOF;
 
 stateDefinition
-    : STATE? symbol=IDENTIFIER (namedAs)? LBRACE stateBody RBRACE
-    | STATE? symbol=IDENTIFIER (namedAs)? SEMICOLON
+    : entryMark? STATE? symbol=IDENTIFIER (namedAs)? LBRACE stateBody RBRACE
+    | entryMark? STATE? symbol=IDENTIFIER (namedAs)? SEMICOLON
+    ;
+
+entryMark
+    : 'entry'
+    | ARROW
     ;
 
 namedAs
@@ -18,17 +23,13 @@ stateBody
     ;
 
 statement
-    : entryStatement
-    | stateDefinition
+    : stateDefinition
     | transitionStatement
-    ;
-
-entryStatement
-    : ARROW symbol=IDENTIFIER SEMICOLON
+    | SEMICOLON
     ;
 
 transitionStatement
-    : fromSymbol=IDENTIFIER ARROW toSymbol=IDENTIFIER COLON eventList (backwardDef)? SEMICOLON
+    : (fromSymbol=IDENTIFIER)? ARROW toSymbol=IDENTIFIER COLON eventList (backwardDef)? SEMICOLON
     ;
 
 eventList

@@ -1,5 +1,5 @@
 from .grammar import GrammarListener, GrammarParser
-from .node import TransitionStatement, EntryStatement, StateDefinition, Program
+from .node import TransitionStatement, StateDefinition, Program
 
 
 class GrammarParseListener(GrammarListener):
@@ -16,6 +16,7 @@ class GrammarParseListener(GrammarListener):
         self.nodes[ctx] = StateDefinition(
             name=ctx.symbol.text,
             display_name=self.nodes[ctx.namedAs()] if ctx.namedAs() is not None else None,
+            is_entry=bool(ctx.entryMark()),
             statements=self.nodes[ctx.stateBody()] if ctx.stateBody() is not None else [],
         )
 
@@ -27,22 +28,19 @@ class GrammarParseListener(GrammarListener):
         super().exitStateBody(ctx)
         self.nodes[ctx] = [
             self.nodes[stat] for stat in ctx.statement()
+            if stat in self.nodes
         ]
 
     def exitStatement(self, ctx: GrammarParser.StatementContext):
         super().exitStatement(ctx)
-        self.nodes[ctx] = self.nodes[ctx.entryStatement() or ctx.transitionStatement() or ctx.stateDefinition()]
-
-    def exitEntryStatement(self, ctx: GrammarParser.EntryStatementContext):
-        super().exitEntryStatement(ctx)
-        self.nodes[ctx] = EntryStatement(
-            entry=ctx.symbol.text,
-        )
+        node = ctx.transitionStatement() or ctx.stateDefinition()
+        if node is not None:
+            self.nodes[ctx] = self.nodes[node]
 
     def exitTransitionStatement(self, ctx: GrammarParser.TransitionStatementContext):
         super().exitTransitionStatement(ctx)
         self.nodes[ctx] = TransitionStatement(
-            from_symbol=ctx.fromSymbol.text,
+            from_symbol=ctx.fromSymbol.text if ctx.fromSymbol is not None else None,
             to_symbol=ctx.toSymbol.text,
             events=self.nodes[ctx.eventList()],
             backward_layers=self.nodes[ctx.backwardDef()] if ctx.backwardDef() is not None else None,

@@ -8,7 +8,6 @@ __all__ = [
     'ASTNode',
     'Program',
     'TransitionStatement',
-    'EntryStatement',
     'StateDefinition',
 ]
 
@@ -34,37 +33,33 @@ class Program(ASTNode):
 
 @dataclass
 class TransitionStatement(ASTNode):
-    from_symbol: str
+    from_symbol: Optional[str]
     to_symbol: str
     events: List[str]
     backward_layers: Optional[int] = None
 
     def _print_to_str(self, sf):
-        print(f'{self.from_symbol} -> {self.to_symbol} : {" + ".join(self.events)}', file=sf, end='')
+        if self.from_symbol is not None:
+            print(f'{self.from_symbol} -> {self.to_symbol} : {" + ".join(self.events)}', file=sf, end='')
+        else:
+            print(f'-> {self.to_symbol} : {" + ".join(self.events)}', file=sf, end='')
         if self.backward_layers is not None:
             print(f' (^{self.backward_layers})', file=sf, end='')
         print(f';', file=sf)
 
 
 @dataclass
-class EntryStatement(ASTNode):
-    entry: str
-
-    def _print_to_str(self, sf):
-        print(f'-> {self.entry};', file=sf)
-
-
-@dataclass
 class StateDefinition(ASTNode):
     name: str
     display_name: Optional[str]
-    statements: List[Union['TransitionStatement', 'EntryStatement', 'StateDefinition']]
+    is_entry: bool
+    statements: List[Union['TransitionStatement', 'StateDefinition']]
 
     def _print_to_str(self, sf):
         if self.display_name is not None:
-            print(f'{self.name} as {self.display_name!r}', file=sf, end='')
+            print(f'{"-> " if self.is_entry else ""}{self.name} as {self.display_name!r}', file=sf, end='')
         else:
-            print(f'{self.name}', file=sf, end='')
+            print(f'{"-> " if self.is_entry else ""}{self.name}', file=sf, end='')
 
         if self.statements:
             print(' {', file=sf)

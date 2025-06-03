@@ -25,6 +25,14 @@ class GrammarListener(ParseTreeListener):
     def exitStateDefinition(self, ctx: GrammarParser.StateDefinitionContext):
         pass
 
+    # Enter a parse tree produced by GrammarParser#entryMark.
+    def enterEntryMark(self, ctx: GrammarParser.EntryMarkContext):
+        pass
+
+    # Exit a parse tree produced by GrammarParser#entryMark.
+    def exitEntryMark(self, ctx: GrammarParser.EntryMarkContext):
+        pass
+
     # Enter a parse tree produced by GrammarParser#namedAs.
     def enterNamedAs(self, ctx: GrammarParser.NamedAsContext):
         pass
@@ -47,14 +55,6 @@ class GrammarListener(ParseTreeListener):
 
     # Exit a parse tree produced by GrammarParser#statement.
     def exitStatement(self, ctx: GrammarParser.StatementContext):
-        pass
-
-    # Enter a parse tree produced by GrammarParser#entryStatement.
-    def enterEntryStatement(self, ctx: GrammarParser.EntryStatementContext):
-        pass
-
-    # Exit a parse tree produced by GrammarParser#entryStatement.
-    def exitEntryStatement(self, ctx: GrammarParser.EntryStatementContext):
         pass
 
     # Enter a parse tree produced by GrammarParser#transitionStatement.
