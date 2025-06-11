@@ -25,9 +25,11 @@ class ASTNode(ABC):
 
 @dataclass
 class Program(ASTNode):
+    init_state: str
     root_state: 'StateDefinition'
 
     def _print_to_str(self, sf):
+        print(f'-> {self.init_state};', file=sf)
         self.root_state._print_to_str(sf)
 
 
@@ -52,14 +54,13 @@ class TransitionStatement(ASTNode):
 class StateDefinition(ASTNode):
     name: str
     display_name: Optional[str]
-    is_entry: bool
     statements: List[Union['TransitionStatement', 'StateDefinition']]
 
     def _print_to_str(self, sf):
         if self.display_name is not None:
-            print(f'{"-> " if self.is_entry else ""}{self.name} as {self.display_name!r}', file=sf, end='')
+            print(f'{self.name} as {self.display_name!r}', file=sf, end='')
         else:
-            print(f'{"-> " if self.is_entry else ""}{self.name}', file=sf, end='')
+            print(f'{self.name}', file=sf, end='')
 
         if self.statements:
             print(' {', file=sf)

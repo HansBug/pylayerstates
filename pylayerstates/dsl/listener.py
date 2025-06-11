@@ -9,14 +9,20 @@ class GrammarParseListener(GrammarListener):
 
     def exitProgram(self, ctx: GrammarParser.ProgramContext):
         super().exitProgram(ctx)
-        self.nodes[ctx] = Program(self.nodes[ctx.stateDefinition()])
+        self.nodes[ctx] = Program(
+            init_state=self.nodes[ctx.entryDefinition()],
+            root_state=self.nodes[ctx.stateDefinition()],
+        )
+
+    def exitEntryDefinition(self, ctx: GrammarParser.EntryDefinitionContext):
+        super().exitEntryDefinition(ctx)
+        self.nodes[ctx] = ctx.symbol.text
 
     def exitStateDefinition(self, ctx: GrammarParser.StateDefinitionContext):
         super().exitStateDefinition(ctx)
         self.nodes[ctx] = StateDefinition(
             name=ctx.symbol.text,
             display_name=self.nodes[ctx.namedAs()] if ctx.namedAs() is not None else None,
-            is_entry=bool(ctx.entryMark()),
             statements=self.nodes[ctx.stateBody()] if ctx.stateBody() is not None else [],
         )
 

@@ -2,11 +2,15 @@
 grammar Grammar;
 
 // Parser rules
-program: stateDefinition EOF;
+program: entryDefinition stateDefinition EOF;
+
+entryDefinition
+    : entryMark symbol=IDENTIFIER SEMICOLON
+    ;
 
 stateDefinition
-    : entryMark? STATE? symbol=IDENTIFIER (namedAs)? LBRACE stateBody RBRACE
-    | entryMark? STATE? symbol=IDENTIFIER (namedAs)? SEMICOLON
+    : STATE? symbol=IDENTIFIER (namedAs)? LBRACE stateBody RBRACE
+    | STATE? symbol=IDENTIFIER (namedAs)? SEMICOLON
     ;
 
 entryMark

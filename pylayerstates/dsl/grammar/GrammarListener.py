@@ -17,6 +17,14 @@ class GrammarListener(ParseTreeListener):
     def exitProgram(self, ctx: GrammarParser.ProgramContext):
         pass
 
+    # Enter a parse tree produced by GrammarParser#entryDefinition.
+    def enterEntryDefinition(self, ctx: GrammarParser.EntryDefinitionContext):
+        pass
+
+    # Exit a parse tree produced by GrammarParser#entryDefinition.
+    def exitEntryDefinition(self, ctx: GrammarParser.EntryDefinitionContext):
+        pass
+
     # Enter a parse tree produced by GrammarParser#stateDefinition.
     def enterStateDefinition(self, ctx: GrammarParser.StateDefinitionContext):
         pass

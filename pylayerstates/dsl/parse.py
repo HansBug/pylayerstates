@@ -27,8 +27,12 @@ def _parse_as_element(input_text, fn_element):
     return listener.nodes[parse_tree]
 
 
-def parse_program(input_text):
+def parse_block(input_text, block_name: str):
     return _parse_as_element(
         input_text=input_text,
-        fn_element=GrammarParser.program,
+        fn_element=getattr(GrammarParser, block_name),
     )
+
+
+def parse_program(input_text):
+    return parse_block(input_text, 'program')
